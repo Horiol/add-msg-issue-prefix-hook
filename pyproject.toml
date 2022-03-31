@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "add_msg_issue_prefix_hook"
-version = "v0.0.6"
+version = "v0.0.7"
 description = "Commit hook preparing message using branch name"
 authors = ["Gastón Avila <avila.gas@gmail.com>"]
 
