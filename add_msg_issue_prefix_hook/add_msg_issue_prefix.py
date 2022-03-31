@@ -35,9 +35,10 @@ def main():
         f.seek(0, 0)
         if issue_number and issue_number not in content_subject:
             content_list = content.split(":", 1)
-            content_list.insert(1, issue_number)
+            if len(content_list) == 1:
+                content_list.insert(0, "")
 
-            f.write("{}({}):{}".format(content_list[0], content_list[1], content_list[2]))
+            f.write("{}({}):{}".format(content_list[0], issue_number, content_list[1]))
         else:
             f.write(content)
 
