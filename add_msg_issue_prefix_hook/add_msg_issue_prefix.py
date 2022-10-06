@@ -23,12 +23,10 @@ def main():
     except Exception as e:
         print(e)
 
-    result = get_ticket_id_from_branch_name(branch)
-    issue_number = ""
-
-    if result:
+    if result := get_ticket_id_from_branch_name(branch):
         issue_number = result.upper()
-
+    else:
+        issue_number = ""
     with open(commit_msg_filepath, "r+") as f:
         content = f.read()
         content_subject = content.split("\n", maxsplit=1)[0].strip()
@@ -38,7 +36,7 @@ def main():
             if len(content_list) == 1:
                 content_list.insert(0, "")
 
-            f.write("{}({}):{}".format(content_list[0], issue_number, content_list[1]))
+            f.write(f"{content_list[0]}({issue_number}):{content_list[1]}")
         else:
             f.write(content)
 
